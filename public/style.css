@@ -1,0 +1,136 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: hwb(0 19% 81%);
+    color: #333;
+    margin: 0;
+    padding: 40px;
+}
+
+.container {
+    background: #ffffff;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+h2, h3 {
+    color: #1e293b;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+.formulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto; /* Alinha campos lado a lado */
+    gap: 15px;
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    align-items: end;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    border-color: #3b82f6;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#btnSalvar {
+    background-color: #3b82f6;
+    color: white;
+}
+
+#btnSalvar:hover {
+    background-color: #2563eb;
+    transform: translateY(-1px);
+}
+
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+}
+
+th {
+    background-color: #f1f5f9;
+    color: #64748b;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    padding: 15px;
+    text-align: left;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 15px;
+}
+
+tr:hover td {
+    background-color: #f8fafc;
+}
+
+
+td button {
+    padding: 6px 12px;
+    font-size: 13px;
+    margin-right: 5px;
+}
+
+
+td button:not(.editar) {
+    background-color: #fee2e2;
+    color: #ef4444;
+}
+
+td button:not(.editar):hover {
+    background-color: #fecaca;
+}
+
+
+.editar {
+    background-color: #dbeafe;
+    color: #3b82f6;
+}
+
+.editar:hover {
+    background-color: #bfdbfe;
+}
+
+
+@media (max-width: 768px) {
+    .formulario {
+        grid-template-columns: 1fr;
+    }
+}
