@@ -6,7 +6,22 @@ function salvarAluno() {
     const nome = document.getElementById("nome").value;
     const idade = document.getElementById("idade").value;
     const curso = document.getElementById("curso").value;
-    
+
+
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+
+  if (email === "admin@gmail.com" && senha === "123456") {
+    window.location.href = "index2.html";
+
+
+  } else {
+    alert("Email ou senha incorretos!");
+  }
+});
 
     if (!nome || !idade || !curso) {
         alert("Preencha todos os campos!");
@@ -52,7 +67,14 @@ function listarAlunos() {
                 <td>${aluno.nome}</td>
                 <td>${aluno.idade}</td>
                 <td>${aluno.curso}</td>
-                
+                <td>
+                    <button onclick="deletarAluno(${aluno.id})">
+                        Excluir
+                    </button>
+                    <button class="editar" onclick='prepararEdicao(${JSON.stringify(aluno)})'>
+                        Editar
+                    </button>
+                </td>
             </tr>
             `;
         });
@@ -60,7 +82,28 @@ function listarAlunos() {
     .catch(err => console.error("Erro ao listar alunos:", err));
 }
 
+// PREPARAR EDIÇÃO
+function prepararEdicao(aluno) {
+    document.getElementById("nome").value = aluno.nome;
+    document.getElementById("idade").value = aluno.idade;
+    document.getElementById("curso").value = aluno.curso;
 
+    idEditando = aluno.id;
+    document.getElementById("btnSalvar").innerText = "Atualizar";
+}
+
+// DELETAR ALUNO
+function deletarAluno(id) {
+    if (confirm("Deseja realmente excluir este aluno?")) {
+        fetch(`${api}/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => {
+            listarAlunos();
+        })
+        .catch(err => console.error("Erro ao deletar aluno:", err));
+    }
+}
 
 // LIMPAR CAMPOS
 function limparCampos() {

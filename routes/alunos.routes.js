@@ -3,6 +3,7 @@ const router = express.Router();
 
 const alunosController = require('../controllers/alunos.controller');
 
+
 router.get('/alunos', alunosController.listarAlunos);
 router.get('/alunos/:id', alunosController.buscarAluno);
 router.post('/alunos', alunosController.criarAluno);
