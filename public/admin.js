@@ -7,22 +7,6 @@ function salvarAluno() {
     const idade = document.getElementById("idade").value;
     const curso = document.getElementById("curso").value;
 
-
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
-
-  if (email === "admin@gmail.com" && senha === "123456") {
-    window.location.href = "index2.html";
-
-
-  } else {
-    alert("Email ou senha incorretos!");
-  }
-});
-
     if (!nome || !idade || !curso) {
         alert("Preencha todos os campos!");
         return;
@@ -71,7 +55,7 @@ function listarAlunos() {
                     <button onclick="deletarAluno(${aluno.id})">
                         Excluir
                     </button>
-                    <button class="editar" onclick='prepararEdicao(${JSON.stringify(aluno)})'>
+                    <button onclick="prepararEdicao(${aluno.id}, '${aluno.nome}', ${aluno.idade}, '${aluno.curso}')">
                         Editar
                     </button>
                 </td>
@@ -83,12 +67,12 @@ function listarAlunos() {
 }
 
 // PREPARAR EDIÇÃO
-function prepararEdicao(aluno) {
-    document.getElementById("nome").value = aluno.nome;
-    document.getElementById("idade").value = aluno.idade;
-    document.getElementById("curso").value = aluno.curso;
+function prepararEdicao(id, nome, idade, curso) {
+    document.getElementById("nome").value = nome;
+    document.getElementById("idade").value = idade;
+    document.getElementById("curso").value = curso;
 
-    idEditando = aluno.id;
+    idEditando = id;
     document.getElementById("btnSalvar").innerText = "Atualizar";
 }
 
