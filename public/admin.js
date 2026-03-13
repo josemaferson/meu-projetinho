@@ -1,4 +1,4 @@
-const api = "http://localhost:3000/api/alunos";
+const api = "/api/alunos";
 let idEditando = null;
 
 // CADASTRAR OU ATUALIZAR ALUNO
